@@ -24,10 +24,13 @@ function changeStyleCookie(value, daysLeft) {
 
 //Check cookie at the beginning, to change style if necessary
 function checkStyleCookie() {
+  console.log("checking...");
   var cookieValue = getCookie('style');
 
   //If there is no cookie or default, nothing to change
-  if(cookieValue === '' || cookieValue === 'Default') return;
+  if(cookieValue === '') cookieValue = 'Default';
+
+  console.log(cookieValue);
 
   var links = document.getElementsByTagName('link');
 
@@ -43,6 +46,7 @@ function checkStyleCookie() {
 
 //Generate links to change style
 function generateStyleLinks() {
+  console.log("Generating...");
   var links = document.getElementsByTagName('link');
   var menu = document.createElement('ul');
 
@@ -74,6 +78,8 @@ function generateStyleLinks() {
 
 //Generate style links and check cookie style
 document.addEventListener("DOMContentLoaded", function(event) {
-  generateStyleLinks();
-  checkStyleCookie();
-})
+
+});
+
+generateStyleLinks();
+checkStyleCookie();

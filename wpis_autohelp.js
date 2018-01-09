@@ -39,16 +39,24 @@ function actualTime() {
 document.getElementById('date').addEventListener('blur', function() {
   var date = document.getElementById('date').value;
   date = date.split('-');
+  var y = date[0],
+      m = date[1],
+      d = date[2];
+
+  var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if ((!(y % 4) && y % 100) || !(y % 400)) {
+    daysInMonth[1] = 29;
+  }
 
   if(date.length !== 3 ||
     date[0].length !== 4 ||
     date[1].length !== 2 ||
     date[2].length !== 2 ||
-    parseInt(date[0]) <= 0 ||
-    parseInt(date[1]) <= 0 ||
-    parseInt(date[1]) > 12 ||
-    parseInt(date[2]) <= 0 ||
-    parseInt(date[2]) > 31) {
+    y <= 0 ||
+    m <= 0 ||
+    m > 12 ||
+    d <= 0 ||
+    d > daysInMonth[m-1]) {
       actualDate();
     }
 });
