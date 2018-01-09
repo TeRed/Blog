@@ -11,7 +11,7 @@ if(!isset($_POST["submit"])) {
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>Nowy komentarz - formularz</title>
 	<link rel="stylesheet" href="default.css" type="text/css" title="Default" />
-	<link rel="stylesheet" href="additional.css" type="text/css" title="Additional" />
+	<link rel="alternate stylesheet" href="additional.css" type="text/css" title="Additional" />
 </head>
 <body>
 	<?php include 'menu.php'; ?>

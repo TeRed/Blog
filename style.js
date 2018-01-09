@@ -34,12 +34,12 @@ function checkStyleCookie() {
 
   var links = document.getElementsByTagName('link');
 
+  var oneCssFlag = false;
   for(var i = 0; i < links.length; i++) {
-    if(links[i].title === cookieValue) {
+    links[i].disabled = true;
+    if(links[i].title === cookieValue && oneCssFlag === false) {
       links[i].disabled = false;
-    }
-    else {
-      links[i].disabled = true;
+      oneCssFlag = true;
     }
   }
 }
@@ -59,13 +59,13 @@ function generateStyleLinks() {
     link.innerHTML = links[i].title;
 
     link.addEventListener('click', function(e) {
+      var oneCssFlag = false;
       for(var j = 0; j < links.length; j++) {
-        if(links[j].title === e.target.innerHTML) {
+        links[j].disabled = true;
+        if(links[j].title === e.target.innerHTML && oneCssFlag === false) {
           links[j].disabled = false;
           changeStyleCookie(links[j].title, 365);
-        }
-        else {
-          links[j].disabled = true;
+          oneCssFlag = true;
         }
       }
     });
@@ -78,8 +78,6 @@ function generateStyleLinks() {
 
 //Generate style links and check cookie style
 document.addEventListener("DOMContentLoaded", function(event) {
-
+  generateStyleLinks();
+  checkStyleCookie();
 });
-
-generateStyleLinks();
-checkStyleCookie();

@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>Nowy wpis - formularz</title>
 	<link rel="stylesheet" href="default.css" type="text/css" title="Default" />
-	<link rel="stylesheet" href="additional.css" type="text/css" title="Additional" />
+	<link rel="alternate stylesheet" href="additional.css" type="text/css" title="Additional" />
 </head>
 <body>
 	<?php include 'menu.php'; ?>
@@ -30,11 +30,11 @@
 		<input type="text" id="time" name="time" /><br>
 		<!-- pattern="(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])" -->
 
-		<input type="file" name="fileToUpload1" /><br />
+		<input type="file" name="fileToUpload1" onchange="addChooser(1)" /><br />
 
-		<input type="button" value="Kolejny plik" id="nextFile"><br />
+		<!-- <input type="button" value="Kolejny plik" id="nextFile"><br /> -->
 
-		<input type="submit" name="submit" value="Wyślij">
+		<input id="submit" type="submit" name="submit" value="Wyślij">
 		<input type="reset" value="Wyczyść">
 	</form>
 

@@ -1,11 +1,13 @@
 //AJAX - push comment to server
 function pushChatData() {
-  var xmlhttp = new XMLHttpRequest();
-  var userName = document.getElementById('user_name').value;
-  var commentContent = document.getElementById('content').value;
+  if(document.getElementById('activated').checked) {
+    var xmlhttp = new XMLHttpRequest();
+    var userName = document.getElementById('user_name').value;
+    var commentContent = document.getElementById('content').value;
 
-  xmlhttp.open('GET', 'poll_add.php?user_name='+userName+'&content='+commentContent, true);
-  xmlhttp.send();
+    xmlhttp.open('GET', 'poll_add.php?user_name='+userName+'&content='+commentContent, true);
+    xmlhttp.send();
+  }
 }
 
 //AJAX - long poll from server
@@ -37,6 +39,9 @@ document.getElementById('activated').onchange = function(e) {
 //Push comment to server
 document.getElementById('communicator').onsubmit = function(event) {
   event.preventDefault();
-  pushChatData();
+  if(document.getElementById('activated').checked) {
+    pushChatData();
+  }
+  else alert("Czat nieaktywny");
   document.getElementById('content').value = '';
 }
